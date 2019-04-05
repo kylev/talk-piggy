@@ -4,7 +4,9 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    speakers: [{ name: "Steven" }, { name: "Nick" }]
+  },
   mutations: {},
   actions: {}
 });
