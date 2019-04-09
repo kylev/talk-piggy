@@ -1,17 +1,22 @@
 <template>
-  <div class="container" id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+  <div id="app">
+    <TimerControl />
     <SpeakerList />
+    <AddSpeaker />
   </div>
 </template>
 
 <script>
+import AddSpeaker from "./components/AddSpeaker.vue";
 import SpeakerList from "./components/SpeakerList.vue";
+import TimerControl from "./components/TimerControl.vue";
 
 export default {
   name: "app",
   components: {
-    SpeakerList
+    AddSpeaker,
+    SpeakerList,
+    TimerControl
   }
 };
 </script>

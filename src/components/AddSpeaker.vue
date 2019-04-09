@@ -1,12 +1,18 @@
 <template>
-  <b-field>
-    <b-input placeholder="Joe Schmo" v-model.trim="name" />
-    <p class="control">
-      <button class="button is-info" v-on:click="addSpeaker(name)">
-        Add
-      </button>
-    </p>
-  </b-field>
+  <section>
+    <b-field>
+      <b-input
+        placeholder="Joe Schmo"
+        v-model.trim="name"
+        v-on:keyup.enter="addSpeaker(name)"
+      />
+      <p class="control">
+        <button class="button is-info" v-on:click="addSpeaker(name)">
+          Adds
+        </button>
+      </p>
+    </b-field>
+  </section>
 </template>
 
 <script>
