@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-card v-bind:title="speaker.name" v-for="speaker in speakers" :key="speaker.name">
+    <b-card v-bind:title="s.name" v-for="s in speakers" :key="s.name">
       <b-button>Talking</b-button>
     </b-card>
   </div>
