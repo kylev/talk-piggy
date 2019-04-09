@@ -1,17 +1,16 @@
 <template>
   <section>
-    <b-field>
-      <b-input
+    <b-form-group label="Add Speaker" label-for="add-speaker">
+      <b-form-input
+        id="add-speaker"
         placeholder="Joe Schmo"
         v-model.trim="name"
         v-on:keyup.enter="addSpeaker(name)"
       />
-      <p class="control">
-        <button class="button is-info" v-on:click="addSpeaker(name)">
-          Adds
-        </button>
-      </p>
-    </b-field>
+      <b-button class="button is-info" v-on:click="addSpeaker(name)">
+        Add
+      </b-button>
+    </b-form-group>
   </section>
 </template>
 
