@@ -3,15 +3,22 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+function createUser(name) {
+  return {
+    id: Math.random().toString(),
+    name
+  };
+}
+
 export default new Vuex.Store({
   state: {
-    speakers: [{ name: "Steven" }, { name: "Nick" }],
+    speakers: [createUser("Steven"), createUser("Nick")],
     tickSeconds: 0,
     tickTimer: null
   },
   mutations: {
     addSpeaker(state, name) {
-      state.speakers.push({ name });
+      state.speakers.push(createUser(name));
     },
     incrementTick(state) {
       state.tickSeconds++;
