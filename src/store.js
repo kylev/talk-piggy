@@ -52,8 +52,14 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    startTalking({ commit, dispatch }, payload) {
+      dispatch("startTimer");
+      commit("toggleSpeaking", payload);
+    },
     startTimer({ commit, state }) {
-      state.tickTimer = setInterval(() => commit("incrementTick"), 1000);
+      if (!state.tickTimer) {
+        state.tickTimer = setInterval(() => commit("incrementTick"), 1000);
+      }
     },
     stopTimer({ state }) {
       clearInterval(state.tickTimer);
