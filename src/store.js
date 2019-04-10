@@ -30,7 +30,7 @@ export default new Vuex.Store({
 
       if (i >= 0) {
         const s = state.speakers[i];
-        state.speakers.splice(i, 1, { ...s, isSpeaking: !s.isSpeaking });
+        Vue.set(state.speakers, i, { ...s, isSpeaking: !s.isSpeaking });
       }
     },
     incrementTick(state) {
