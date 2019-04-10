@@ -1,6 +1,9 @@
 language: node_js
 cache: yarn
 branches:
-  only:
-    master
-after_success: yarn run deploy -r https://$GITHUB_TOKEN@github.com/kylev/talk-piggy.git/ -m "Travis ${TRAVIS_BUILD_NUMBER} kylev/talk-piggy@${TRAVIS_COMMIT}"
+  only: master
+after_success: yarn run deploy -r https://$GITHUB_TOKEN@github.com/kylev/talk-piggy.git/
+  -m "Travis ${TRAVIS_BUILD_NUMBER} kylev/talk-piggy@${TRAVIS_COMMIT}"
+env:
+  global:
+    secure: pMKn+upyI8Ep60wmCxIiWR9SVhgSXmSie9o9pybA3Ef2JbaUw7myuRxq1m7Jn6XWdwPJ4bGDmCr67F3yYfs2X3dtdXgCoJlDFu2cSlrHhIR1lcBjUiUmcwfz18Z9/H6PeELtBMMAggULVKAqh6O3+aecZEhCcOm0ozcfj+eYjFGuLEtzWDpuJtdy6x4w4giPL+IEGKIdkmRXSOjWZbgWxGMS5PKrU2ItjobRjuSElqQ7n11AcOD42uSr1NS6dvM4hiKtPP/Ei53GgbjkG2R2rLrcnWMGvIAtjmDk0leqbpZAPQbNWlO33lGRBL/Na/24TTYUM/fknjSv/Ro6ecfvxYdzz3ILAvvXnoyN52jjwDGXA4YllB6FhGsWb2e33uukOFXJpVDKZxkWJLoaXeBhpYH2F8CMa30TtFXseg9bLjVKo9P8bRFdH2lIF54UVhzplT21LJdXz8sHxhwQckwm1X6J55LZ/gOmlgNOFi6Q3UJFytUp9BXhNy8xDzu23a6xnZIxJhD1LbhLOPUJJRfYqIeZ/YKCTpqL4l4zjOIAh6VbhiJXt7LrlugWBWzm5o+GZ4AC5A3sw3uWRFRB+THZLt5gqD0/M3SJM86O7TCFePCLv4Kw0mN51eiPxuwG+/AU+aEndCApK6SVwO7v2/M+RCPo7voVDfiyNFc0+a1k8tM=
