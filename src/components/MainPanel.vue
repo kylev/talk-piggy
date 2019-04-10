@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container class="py-md-2">
     <b-row>
       <b-col class="text-center">
         <b-card title="Total">
