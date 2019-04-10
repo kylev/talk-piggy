@@ -4,11 +4,10 @@
       <b-button
         v-on:click="toggleSpeaking(s.id)"
         v-bind:pressed="s.isSpeaking"
-        variant="primary"
+        variant="outline-primary"
       >
         Talking
       </b-button>
-      <div>{{ s.isSpeaking }} man</div>
     </b-card>
   </div>
 </template>
