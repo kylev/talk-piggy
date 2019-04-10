@@ -27,6 +27,9 @@ export default new Vuex.Store({
     addSpeaker(state, name) {
       state.speakers.push(createSpeaker(name));
     },
+    removeSpeaker(state, id) {
+      state.speakers = state.speakers.filter(item => item.id !== id);
+    },
     toggleSpeaking(state, id) {
       const i = findSpeakerIndex(state.speakers, id);
 

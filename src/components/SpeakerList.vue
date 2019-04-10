@@ -2,14 +2,18 @@
   <b-container>
     <b-row>
       <b-col v-for="s in speakers" :key="s.id" md="4">
-        <SpeakerCard :speaker="s" @toggle="startTalking(s.id)" />
+        <SpeakerCard
+          :speaker="s"
+          @toggle="startTalking(s.id)"
+          @remove="removeSpeaker(s.id)"
+        />
       </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 
 import SpeakerCard from "./SpeakerCard.vue";
 
@@ -23,6 +27,7 @@ export default {
     })
   },
   methods: {
+    ...mapMutations(["removeSpeaker"]),
     ...mapActions(["startTalking"])
   }
 };

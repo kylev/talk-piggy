@@ -1,5 +1,15 @@
 <template>
-  <b-card v-bind:title="speaker.name">
+  <b-card>
+    <div slot="header">
+      {{ speaker.name }}
+      <b-button
+        @click="$emit('remove')"
+        size="sm"
+        variant="outline-danger"
+        class="float-right"
+        >X</b-button
+      >
+    </div>
     <b-card-text>
       <TimeDisplay v-bind:time="speaker.speakingSeconds" />
     </b-card-text>
