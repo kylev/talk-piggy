@@ -45,7 +45,6 @@ export default {
   methods: {
     ...mapMutations(["addSpeaker"]),
     focusInput() {
-      console.log("focusing");
       this.$refs["name-field"].focus();
     },
     handleOk() {
