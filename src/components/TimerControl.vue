@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b-button v-if="!running" v-on:click="startTimer">Start</b-button>
+    <b-button v-if="!running" v-on:click="startTimer" variant="light">Start</b-button>
     <b-button v-if="running" v-on:click="stopTimer">Pause</b-button>
   </section>
 </template>
