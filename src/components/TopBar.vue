@@ -11,9 +11,19 @@
         </b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
-    <b-modal ref="modal" id="add-speaker-modal" @ok="handleOk">
+    <b-modal
+      ref="modal"
+      id="add-speaker-modal"
+      @ok="handleOk"
+      @shown="focusInput"
+      title="Add Piggy"
+    >
       <b-form @submit.stop.prevent="handleSubmit">
-        <b-form-input placeholder="Joe Schmo" v-model.trim="name" />
+        <b-form-input
+          v-model.trim="name"
+          ref="name-field"
+          placeholder="Joe Schmo"
+        />
       </b-form>
     </b-modal>
   </b-navbar>
@@ -34,6 +44,10 @@ export default {
   },
   methods: {
     ...mapMutations(["addSpeaker"]),
+    focusInput() {
+      console.log("focusing");
+      this.$refs["name-field"].focus();
+    },
     handleOk() {
       this.addSpeaker(this.name);
       this.name = "";
