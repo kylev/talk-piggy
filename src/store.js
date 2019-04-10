@@ -7,7 +7,8 @@ function createSpeaker(name) {
   return {
     id: Math.random().toString(),
     name,
-    isSpeaking: false
+    isSpeaking: false,
+    speakingSeconds: 0
   };
 }
 
@@ -19,7 +20,8 @@ export default new Vuex.Store({
   state: {
     speakers: [createSpeaker("Steven"), createSpeaker("Nick")],
     tickSeconds: 0,
-    tickTimer: null
+    tickTimer: null,
+    crosstalkSeconds: 0
   },
   mutations: {
     addSpeaker(state, name) {
@@ -34,6 +36,18 @@ export default new Vuex.Store({
       }
     },
     incrementTick(state) {
+      const updateCount = state.speakers.reduce((accum, item) => {
+        if (item.isSpeaking) {
+          item.speakingSeconds++;
+          return accum + 1;
+        } else {
+          return accum;
+        }
+      }, 0);
+
+      if (updateCount > 1) {
+        state.crosstalkSeconds++;
+      }
       state.tickSeconds++;
     }
   },

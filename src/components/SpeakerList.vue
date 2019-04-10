@@ -1,21 +1,18 @@
 <template>
-  <div>
-    <b-card v-for="s in speakers" v-bind:title="s.name" :key="s.id">
-      <b-button
-        v-on:click="toggleSpeaking(s.id)"
-        v-bind:pressed="s.isSpeaking"
-        variant="outline-primary"
-      >
-        Talking
-      </b-button>
-    </b-card>
-  </div>
+  <b-container>
+    <SpeakerCard v-for="s in speakers" v-bind:speaker="s" v-on:toggle="toggleSpeaking(s.id)" :key="s.id" />
+  </b-container>
 </template>
 
 <script>
 import { mapMutations, mapState } from "vuex";
 
+import SpeakerCard from "./SpeakerCard.vue";
+
 export default {
+  components: {
+    SpeakerCard
+  },
   computed: {
     ...mapState({
       speakers: state => state.speakers
