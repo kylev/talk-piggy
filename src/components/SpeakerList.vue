@@ -1,6 +1,10 @@
 <template>
   <b-container>
-    <SpeakerCard v-for="s in speakers" v-bind:speaker="s" v-on:toggle="toggleSpeaking(s.id)" :key="s.id" />
+    <b-row>
+      <b-col v-for="s in speakers" :key="s.id" md="4">
+        <SpeakerCard :speaker="s" @toggle="toggleSpeaking(s.id)" />
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 

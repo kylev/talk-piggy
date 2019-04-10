@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <TimerControl />
+    <TopBar />
+    <MainPanel />
     <SpeakerList />
     <AddSpeaker />
   </div>
@@ -8,26 +9,22 @@
 
 <script>
 import AddSpeaker from "./components/AddSpeaker.vue";
+import MainPanel from "./components/MainPanel.vue";
 import SpeakerList from "./components/SpeakerList.vue";
-import TimerControl from "./components/TimerControl.vue";
+import TopBar from "./components/TopBar.vue";
 
 export default {
   name: "app",
   components: {
     AddSpeaker,
+    MainPanel,
     SpeakerList,
-    TimerControl
+    TopBar
   }
 };
 </script>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
