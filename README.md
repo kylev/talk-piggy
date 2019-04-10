@@ -1,4 +1,4 @@
-# talk-piggie
+# talk-piggy
 
 ## Project setup
 ```
