@@ -7,7 +7,7 @@
     <b-navbar-nav class="ml-auto">
       <b-nav-item-dropdown text="Menu" right>
         <b-dropdown-item href="#" v-b-modal.add-speaker-modal>
-          Add Speaker
+          Add Piggy
         </b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
