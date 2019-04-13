@@ -34,7 +34,6 @@
 <script>
 import { mapMutations } from "vuex";
 
-//import AddSpeaker from "./AddSpeaker.vue";
 import TimerControl from "./TimerControl.vue";
 
 export default {
