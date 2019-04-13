@@ -70,7 +70,7 @@ export default {
       this.$emit("edit-name", { id: this.speaker.id, name: this.newName });
       this.editing = false;
     },
-    cancelEdit(evt) {
+    cancelEdit() {
       this.editing = false;
     }
   }
