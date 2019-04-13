@@ -23,7 +23,7 @@
           <b-form-input
             v-model.trim="name"
             ref="name-field"
-            placeholder="Joe Schmo"
+            placeholder="Type a name"
           />
         </b-form>
       </b-modal>
