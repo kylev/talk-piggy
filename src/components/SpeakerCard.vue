@@ -6,9 +6,28 @@
     :body-bg-variant="color"
   >
     <b-card-title>
-      {{ speaker.name }}
-      <b-dropdown right :variant="color || 'white'" class="float-right">
-        <b-dropdown-item @click="$emit('remove')">
+      <span v-if="!editing">
+        {{ speaker.name }}
+      </span>
+      <input
+        v-if="editing"
+        v-model.trim="newName"
+        ref="inputField"
+        @keyup.enter="finishEdit"
+        @keyup.esc="cancelEdit"
+        @focusout="cancelEdit"
+        @click.stop
+      />
+      <b-dropdown
+        v-if="!editing"
+        right
+        :variant="color || 'white'"
+        class="float-right"
+      >
+        <b-dropdown-item @click.stop="startEditingName">
+          Edit
+        </b-dropdown-item>
+        <b-dropdown-item @click.stop="$emit('remove')">
           Remove
         </b-dropdown-item>
       </b-dropdown>
@@ -20,6 +39,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import TimeDisplay from "./TimeDisplay.vue";
 
 export default {
@@ -29,13 +49,29 @@ export default {
   },
   data() {
     return {
-      hover: false
+      hover: false,
+      editing: false,
+      newName: ""
     };
   },
   computed: {
     color() {
       if (this.speaker.isSpeaking) return "primary";
       else return this.hover ? "light" : null;
+    }
+  },
+  methods: {
+    startEditingName() {
+      this.newName = this.speaker.name;
+      this.editing = true;
+      Vue.nextTick(() => this.$refs.inputField.focus());
+    },
+    finishEdit() {
+      this.$emit("edit-name", { id: this.speaker.id, name: this.newName });
+      this.editing = false;
+    },
+    cancelEdit(evt) {
+      this.editing = false;
     }
   }
 };

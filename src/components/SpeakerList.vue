@@ -6,6 +6,7 @@
           :speaker="s"
           @toggle="startTalking(s.id)"
           @remove="removeSpeaker(s.id)"
+          @edit-name="editSpeakerName"
         />
       </b-col>
     </b-row>
@@ -27,7 +28,7 @@ export default {
     })
   },
   methods: {
-    ...mapMutations(["removeSpeaker"]),
+    ...mapMutations(["removeSpeaker", "editSpeakerName"]),
     ...mapActions(["startTalking"])
   }
 };

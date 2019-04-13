@@ -27,6 +27,15 @@ export default new Vuex.Store({
     addSpeaker(state, name) {
       state.speakers.push(createSpeaker(name));
     },
+    editSpeakerName(state, { id, name }) {
+      console.log("editspeakername ARGS", arguments);
+      const i = findSpeakerIndex(state.speakers, id);
+
+      if (i >= 0) {
+        const s = state.speakers[i];
+        Vue.set(state.speakers, i, { ...s, name });
+      }
+    },
     removeSpeaker(state, id) {
       state.speakers = state.speakers.filter(item => item.id !== id);
     },
