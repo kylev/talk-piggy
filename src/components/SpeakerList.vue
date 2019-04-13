@@ -4,8 +4,8 @@
       <b-col v-for="s in speakers" :key="s.id" md="4">
         <SpeakerCard
           :speaker="s"
-          @toggle="startTalking(s.id)"
-          @remove="removeSpeaker(s.id)"
+          @toggle="startTalking"
+          @remove="removeSpeaker"
           @edit-name="editSpeakerName"
         />
       </b-col>

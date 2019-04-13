@@ -1,6 +1,6 @@
 <template>
   <b-card
-    @click="$emit('toggle')"
+    @click="$emit('toggle', { id: speaker.id })"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     :body-bg-variant="color"
@@ -27,7 +27,7 @@
         <b-dropdown-item @click.stop="startEditingName">
           Edit
         </b-dropdown-item>
-        <b-dropdown-item @click.stop="$emit('remove')">
+        <b-dropdown-item @click.stop="$emit('remove', { id: speaker.id })">
           Remove
         </b-dropdown-item>
       </b-dropdown>
