@@ -22,6 +22,7 @@ export default new Vuex.Store({
     speakers: [createSpeaker("Alice"), createSpeaker("Bob")],
     tickSeconds: 0,
     tickTimer: null,
+    tickLast: new Date(),
     crosstalkSeconds: 0
   },
   mutations: {
@@ -48,10 +49,14 @@ export default new Vuex.Store({
         Vue.set(state.speakers, i, { ...s, isSpeaking: !s.isSpeaking });
       }
     },
-    incrementTick(state) {
+    setTickLast(state, date) {
+      state.tickLast = date;
+    },
+    incrementTick(state, newTime) {
+      const elapsed = Math.round((newTime - state.tickLast) / 1000);
       const updateCount = state.speakers.reduce((accum, item) => {
         if (item.isSpeaking) {
-          item.speakingSeconds++;
+          item.speakingSeconds += elapsed;
           return accum + 1;
         } else {
           return accum;
@@ -59,9 +64,10 @@ export default new Vuex.Store({
       }, 0);
 
       if (updateCount > 1) {
-        state.crosstalkSeconds++;
+        state.crosstalkSeconds += elapsed;
       }
-      state.tickSeconds++;
+      state.tickLast = new Date();
+      state.tickSeconds += elapsed;
     }
   },
   actions: {
@@ -71,7 +77,10 @@ export default new Vuex.Store({
     },
     startTimer({ commit, state }) {
       if (!state.tickTimer) {
-        state.tickTimer = setInterval(() => commit("incrementTick"), 1000);
+        commit("setTickLast", new Date());
+        state.tickTimer = setInterval(() => {
+          commit("incrementTick", new Date());
+        }, 1000);
         event("TalkPiggy", "start_timer");
       }
     },
