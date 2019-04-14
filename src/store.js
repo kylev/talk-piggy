@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { event } from "vue-analytics";
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
   mutations: {
     addSpeaker(state, name) {
       state.speakers.push(createSpeaker(name));
+      event("TalkPiggy", "add_speaker");
     },
     editSpeakerName(state, { id, name }) {
       const i = findSpeakerIndex(state.speakers, id);
@@ -70,11 +72,15 @@ export default new Vuex.Store({
     startTimer({ commit, state }) {
       if (!state.tickTimer) {
         state.tickTimer = setInterval(() => commit("incrementTick"), 1000);
+        event("TalkPiggy", "start_timer");
       }
     },
     stopTimer({ state }) {
-      clearInterval(state.tickTimer);
-      state.tickTimer = null;
+      if (state.tickTimer) {
+        clearInterval(state.tickTimer);
+        state.tickTimer = null;
+        event("TalkPiggy", "stop_timer");
+      }
     }
   }
 });
