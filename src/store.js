@@ -19,7 +19,7 @@ function findSpeakerIndex(speakers, id) {
 
 export default new Vuex.Store({
   state: {
-    speakers: [createSpeaker("Steven"), createSpeaker("Nick")],
+    speakers: [createSpeaker("Alice"), createSpeaker("Bob")],
     tickSeconds: 0,
     tickTimer: null,
     crosstalkSeconds: 0
