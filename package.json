@@ -2,6 +2,7 @@
   "name": "talk-piggy",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kylev.github.io/talk-piggy/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
