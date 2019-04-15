@@ -15,6 +15,8 @@
   <circle id="face" cx="200" cy="200" r="195" fill="url(#rg)" tabindex="0" aria-label="face"/>
   <circle id="left-eye" cx="120" cy="150" r="30" fill="black"/>
   <circle id="right-eye" cx="280" cy="150" r="30" fill="black"/>
-  <ellipse id="nose" cx="200" cy="250" rx="90" ry="50" stroke-width="15" stroke="black" fill="pink"/>
+  <rect id="nose" x="125" y="200" width="150" height="120" rx="40" ry="20" stroke-width="10" stroke="black" fill="pink"/>
+  <circle id="left-nostril" cx="170" cy="260" r="10" fill="black"/>
+  <circle id="right-nostril" cx="230" cy="260" r="10" fill="black"/>
 
 </svg>

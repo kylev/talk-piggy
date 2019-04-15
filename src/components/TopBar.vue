@@ -1,7 +1,10 @@
 <template>
   <b-navbar type="dark" variant="info" sticky>
     <b-container>
-      <b-navbar-brand href="#">Talk Piggy</b-navbar-brand>
+      <b-navbar-brand href="#">
+        <img src="logo.svg" alt="Logo" height="25" width="25" />
+        Talk Piggy
+      </b-navbar-brand>
       <b-navbar-nav>
         <b-nav-item href="#"><TimerControl /></b-nav-item>
       </b-navbar-nav>
