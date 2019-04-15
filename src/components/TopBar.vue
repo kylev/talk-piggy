@@ -53,7 +53,12 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["addSpeaker", "resetState", "resetSpeakerTimes", "resetTotalTimes"]),
+    ...mapMutations([
+      "addSpeaker",
+      "resetState",
+      "resetSpeakerTimes",
+      "resetTotalTimes"
+    ]),
     focusInput() {
       this.$refs["name-field"].focus();
     },
