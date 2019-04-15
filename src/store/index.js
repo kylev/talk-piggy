@@ -1,8 +1,18 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VuexPersistence from "vuex-persist";
 import { event } from "vue-analytics";
 
 Vue.use(Vuex);
+
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  reducer: state => ({
+    speakers: state.speakers,
+    tickSeconds: state.tickSeconds,
+    crosstalkSeconds: state.crosstalkSeconds
+  })
+});
 
 function createSpeaker(name) {
   return {
@@ -25,6 +35,7 @@ export default new Vuex.Store({
     tickLast: new Date(),
     crosstalkSeconds: 0
   },
+  plugins: [vuexLocal.plugin],
   mutations: {
     addSpeaker(state, name) {
       state.speakers.push(createSpeaker(name));
