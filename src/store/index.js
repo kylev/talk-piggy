@@ -73,12 +73,12 @@ export default new Vuex.Store({
     removeSpeaker(state, { id }) {
       state.speakers = state.speakers.filter(item => item.id !== id);
     },
-    toggleSpeaking(state, { id }) {
+    setSpeakerValue(state, { id, attr, value }) {
       const i = findSpeakerIndex(state.speakers, id);
 
       if (i >= 0) {
         const s = state.speakers[i];
-        Vue.set(state.speakers, i, { ...s, isSpeaking: !s.isSpeaking });
+        Vue.set(state.speakers, i, { ...s, [attr]: value });
       }
     },
     setTickLast(state, date) {
@@ -103,9 +103,11 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    startTalking({ commit, dispatch }, payload) {
-      dispatch("startTimer");
-      commit("toggleSpeaking", payload);
+    updateTalking({ commit, dispatch }, payload) {
+      if (payload.value) {
+        dispatch("startTimer");
+      }
+      commit("setSpeakerValue", { ...payload, attr: "isSpeaking" });
     },
     startTimer({ commit, state }) {
       if (!state.tickTimer) {

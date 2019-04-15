@@ -1,6 +1,6 @@
 <template>
   <b-card
-    @click="$emit('toggle', { id: speaker.id })"
+    @click="$emit('toggle')"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
     :body-bg-variant="color"
@@ -27,7 +27,7 @@
         <b-dropdown-item @click.stop="startEditingName">
           Edit
         </b-dropdown-item>
-        <b-dropdown-item @click.stop="$emit('remove', { id: speaker.id })">
+        <b-dropdown-item @click.stop="$emit('remove')">
           Remove
         </b-dropdown-item>
       </b-dropdown>
@@ -67,7 +67,7 @@ export default {
       Vue.nextTick(() => this.$refs.inputField.focus());
     },
     finishEdit() {
-      this.$emit("edit-name", { id: this.speaker.id, name: this.newName });
+      this.$emit("rename", this.newName);
       this.editing = false;
     },
     cancelEdit() {

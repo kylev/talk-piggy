@@ -4,9 +4,9 @@
       <b-col v-for="s in speakers" :key="s.id" md="4">
         <SpeakerCard
           :speaker="s"
-          @toggle="startTalking"
-          @remove="removeSpeaker"
-          @edit-name="editSpeakerName"
+          @toggle="updateTalking({ id: s.id, value: !s.isSpeaking })"
+          @remove="removeSpeaker({ id: s.id })"
+          @rename="name => editSpeakerName({ id: s.id, name })"
         />
       </b-col>
     </b-row>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     ...mapMutations(["removeSpeaker", "editSpeakerName"]),
-    ...mapActions(["startTalking"])
+    ...mapActions(["updateTalking"])
   }
 };
 </script>
