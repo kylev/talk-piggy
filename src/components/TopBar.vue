@@ -10,6 +10,12 @@
           <b-dropdown-item href="#" v-b-modal.add-speaker-modal>
             Add Piggy
           </b-dropdown-item>
+          <b-dropdown-item href="#" @click="resetTotalTimes">
+            Top Clock Clear
+          </b-dropdown-item>
+          <b-dropdown-item href="#" @click="resetSpeakerTimes">
+            Piggy Clock Clear
+          </b-dropdown-item>
           <b-dropdown-item href="#" @click="resetState">
             Hard Reset
           </b-dropdown-item>
@@ -47,7 +53,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["addSpeaker", "resetState"]),
+    ...mapMutations(["addSpeaker", "resetState", "resetSpeakerTimes", "resetTotalTimes"]),
     focusInput() {
       this.$refs["name-field"].focus();
     },

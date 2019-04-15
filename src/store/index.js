@@ -49,6 +49,15 @@ export default new Vuex.Store({
         state[key] = s[key];
       });
     },
+    resetSpeakerTimes(state) {
+      state.speakers.map(s => {
+        s.speakingSeconds = 0;
+      });
+    },
+    resetTotalTimes(state) {
+      state.tickSeconds = 0;
+      state.crosstalkSeconds = 0;
+    },
     addSpeaker(state, name) {
       state.speakers.push(createSpeaker(name));
       event("TalkPiggy", "add_speaker");
