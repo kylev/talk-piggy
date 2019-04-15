@@ -10,6 +10,9 @@
           <b-dropdown-item href="#" v-b-modal.add-speaker-modal>
             Add Piggy
           </b-dropdown-item>
+          <b-dropdown-item href="#" @click="resetState">
+            Hard Reset
+          </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       <b-modal
@@ -44,7 +47,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["addSpeaker"]),
+    ...mapMutations(["addSpeaker", "resetState"]),
     focusInput() {
       this.$refs["name-field"].focus();
     },

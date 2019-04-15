@@ -27,16 +27,28 @@ function findSpeakerIndex(speakers, id) {
   return speakers.findIndex(e => e.id === id);
 }
 
-export default new Vuex.Store({
-  state: {
+function initialState() {
+  return {
     speakers: [createSpeaker("Alice"), createSpeaker("Bob")],
     tickSeconds: 0,
     tickTimer: null,
     tickLast: new Date(),
     crosstalkSeconds: 0
-  },
+  };
+}
+
+export default new Vuex.Store({
+  state: initialState,
   plugins: [vuexLocal.plugin],
   mutations: {
+    resetState(state) {
+      clearInterval(state.tickTimer);
+      // acquire initial state
+      const s = initialState();
+      Object.keys(s).forEach(key => {
+        state[key] = s[key];
+      });
+    },
     addSpeaker(state, name) {
       state.speakers.push(createSpeaker(name));
       event("TalkPiggy", "add_speaker");
