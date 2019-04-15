@@ -8,6 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "true",
+    "logo": "convert public/logo.svg public/logo.png",
     "predeploy": "rm -rf dist/ && yarn run build",
     "deploy": "gh-pages -d dist"
   },
