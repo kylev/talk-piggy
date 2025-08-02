@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.vue",
+    "format": "prettier --check src/",
     "test": "true",
     "logo": "convert src/components/logo.svg public/logo.png"
   },
@@ -27,6 +28,7 @@
     "eslint": "^9.32.0",
     "eslint-plugin-vue": "^10.4.0",
     "globals": "^16.3.0",
+    "prettier": "^3.6.2",
     "unplugin-vue-components": "^28.8.0",
     "vite": "^7.0.6",
     "vite-plugin-vue-devtools": "^8.0.0",
