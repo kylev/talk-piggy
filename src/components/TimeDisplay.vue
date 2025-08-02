@@ -8,18 +8,18 @@
 
 <script>
 export default {
-  props: ["time"],
+  props: ['time'],
   computed: {
     hours() {
-      const h = Math.floor(this.time / 3600);
-      return h > 0 ? h : null;
+      const h = Math.floor(this.time / 3600)
+      return h > 0 ? h : null
     },
     minutes() {
-      return (Math.floor(this.time / 60) % 60).toString().padStart(2, "0");
+      return (Math.floor(this.time / 60) % 60).toString().padStart(2, '0')
     },
     seconds() {
-      return (this.time % 60).toString().padStart(2, "0");
-    }
-  }
-};
+      return (this.time % 60).toString().padStart(2, '0')
+    },
+  },
+}
 </script>
