@@ -16,16 +16,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from "pinia";
+import { usePrimaryStore } from "@/stores/primary";
 
 import TimeDisplay from "./TimeDisplay.vue";
 
 export default {
   components: { TimeDisplay },
   computed: {
-    ...mapState({
-      totalTime: state => state.tickSeconds,
-      crossTime: state => state.crosstalkSeconds
+    ...mapState(usePrimaryStore, {
+      totalTime: "tickSeconds",
+      crossTime: "crosstalkSeconds"
     })
   }
 };

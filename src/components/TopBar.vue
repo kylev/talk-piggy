@@ -44,7 +44,8 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapActions } from "pinia";
+import { usePrimaryStore } from "@/stores/primary";
 
 import TimerControl from "./TimerControl.vue";
 
@@ -56,7 +57,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations([
+    ...mapActions(usePrimaryStore, [
       "addSpeaker",
       "resetState",
       "resetSpeakerTimes",

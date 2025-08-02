@@ -1,26 +1,22 @@
-import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
-import VueAnalytics from "vue-analytics";
+import { createBootstrap } from 'bootstrap-vue-next';
+import { createPinia } from 'pinia';
+import { createApp } from "vue";
+import { configure as configureGTag } from "vue-gtag";
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue-next/dist/bootstrap-vue-next.css';
+
 import App from "./App.vue";
-import store from "./store";
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-
-Vue.use(BootstrapVue);
-Vue.use(VueAnalytics, {
-  id: "UA-627907-4",
-  debug: {
-    sendHitTask: import.meta.env.PROD,
-  }
+// TODO verify working.
+configureGTag({
+  tagId: "G-T8GEX2GPTP"
 });
 
-Vue.config.productionTip = false;
+const pinia = createPinia();
+const app = createApp(App);
+app.use(createBootstrap());
+app.use(pinia);
 
-new Vue({
-  store,
-  render: h => h(App),
-  mounted() {
-    this.$ga.page(import.meta.env.BASE_URL);
-  }
-}).$mount("#app");
+// app.config.productionTip = false;
+app.mount("#app");

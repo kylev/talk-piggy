@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import { mapActions, mapMutations, mapState } from "vuex";
+import { mapActions, mapState } from "pinia";
+import { usePrimaryStore } from "@/stores/primary";
 
 import SpeakerCard from "./SpeakerCard.vue";
 
@@ -23,13 +24,10 @@ export default {
     SpeakerCard
   },
   computed: {
-    ...mapState({
-      speakers: state => state.speakers
-    })
+    ...mapState(usePrimaryStore, ["speakers"])
   },
   methods: {
-    ...mapMutations(["removeSpeaker", "editSpeakerName"]),
-    ...mapActions(["updateTalking"])
+    ...mapActions(usePrimaryStore, ["editSpeakerName", "removeSpeaker", "updateTalking"])
   }
 };
 </script>
