@@ -6,8 +6,7 @@ export default defineConfig([
   globalIgnores(['dist', 'tmp']),
   // add more generic rulesets here, such as:
   // js.configs.recommended,
-  ...pluginVue.configs['flat/vue2-recommended'],
-  // ...pluginVue.configs['flat/recommended'], // Use this if you are using Vue.js 3.x.
+  ...pluginVue.configs['flat/vue-recommended'],
   {
     rules: {
       // override/add rules settings here, such as:

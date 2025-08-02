@@ -1,23 +1,22 @@
 <template>
   <section>
-    <b-button v-if="!running" v-on:click="startTimer" variant="light">
+    <b-button v-if="!isRunning" v-on:click="startTimer" variant="light">
       Start
     </b-button>
-    <b-button v-if="running" v-on:click="stopTimer">Pause</b-button>
+    <b-button v-if="isRunning" v-on:click="stopTimer">Pause</b-button>
   </section>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "pinia";
+import { usePrimaryStore } from "@/stores/primary";
 
 export default {
   methods: {
-    ...mapActions(["startTimer", "stopTimer"])
+    ...mapActions(usePrimaryStore, ["startTimer", "stopTimer"])
   },
   computed: {
-    running() {
-      return this.$store.state.tickTimer !== null;
-    }
+    ...mapState(usePrimaryStore, ["isRunning"])
   }
 };
 </script>

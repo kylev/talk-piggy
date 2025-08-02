@@ -1,50 +1,41 @@
 <template>
   <b-navbar type="dark" variant="info" sticky>
-    <b-container>
-      <b-navbar-brand href="#">
-        <img src="./logo.svg" alt="Logo" height="25" width="25" />
-        Talk Piggy
-      </b-navbar-brand>
-      <b-navbar-nav>
-        <b-nav-item href="#"><TimerControl /></b-nav-item>
-      </b-navbar-nav>
-      <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown text="Menu" right>
-          <b-dropdown-item href="#" v-b-modal.add-speaker-modal>
-            Add Piggy
-          </b-dropdown-item>
-          <b-dropdown-item href="#" @click="resetTotalTimes">
-            Top Clock Clear
-          </b-dropdown-item>
-          <b-dropdown-item href="#" @click="resetSpeakerTimes">
-            Piggy Clock Clear
-          </b-dropdown-item>
-          <b-dropdown-item href="#" @click="resetState">
-            Hard Reset
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
-      </b-navbar-nav>
-      <b-modal
-        ref="modal"
-        id="add-speaker-modal"
-        @ok="handleOk"
-        @shown="focusInput"
-        title="Add Piggy"
-      >
-        <b-form @submit.stop.prevent="handleSubmit">
-          <b-form-input
-            v-model.trim="name"
-            ref="name-field"
-            placeholder="Type a name"
-          />
-        </b-form>
-      </b-modal>
-    </b-container>
+    <b-navbar-brand href="#">
+      <img src="./logo.svg" alt="Logo" height="25" width="25" />
+      Talk Piggy
+    </b-navbar-brand>
+    <b-navbar-nav>
+      <b-nav-item href="#">
+        <TimerControl />
+      </b-nav-item>
+    </b-navbar-nav>
+    <b-navbar-nav class="ml-auto">
+      <b-nav-item-dropdown text="Menu" right>
+        <b-dropdown-item href="#" v-b-modal.add-speaker-modal>
+          Add Piggy
+        </b-dropdown-item>
+        <b-dropdown-item href="#" @click="resetTotalTimes">
+          Top Clock Clear
+        </b-dropdown-item>
+        <b-dropdown-item href="#" @click="resetSpeakerTimes">
+          Piggy Clock Clear
+        </b-dropdown-item>
+        <b-dropdown-item href="#" @click="resetState">
+          Hard Reset
+        </b-dropdown-item>
+      </b-nav-item-dropdown>
+    </b-navbar-nav>
+    <b-modal ref="modal" id="add-speaker-modal" @ok="handleOk" @shown="focusInput" title="Add Piggy">
+      <b-form @submit.stop.prevent="handleSubmit">
+        <b-form-input v-model.trim="name" ref="name-field" placeholder="Type a name" />
+      </b-form>
+    </b-modal>
   </b-navbar>
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapActions } from "pinia";
+import { usePrimaryStore } from "@/stores/primary";
 
 import TimerControl from "./TimerControl.vue";
 
@@ -56,7 +47,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations([
+    ...mapActions(usePrimaryStore, [
       "addSpeaker",
       "resetState",
       "resetSpeakerTimes",
