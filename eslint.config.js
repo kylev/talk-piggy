@@ -1,22 +1,22 @@
-import pluginVue from 'eslint-plugin-vue'
-import globals from 'globals'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import js from "@eslint/js";
+import pluginVue from "eslint-plugin-vue";
+import { defineConfig, globalIgnores } from "eslint/config";
+import globals from "globals";
 
 export default defineConfig([
-  globalIgnores(['dist', 'tmp']),
-  // add more generic rulesets here, such as:
-  // js.configs.recommended,
-  ...pluginVue.configs['flat/recommended'],
+  globalIgnores(["dist", "tmp"]),
   {
+    files: ["**/*.{js,vue}"],
+    extends: [js.configs.recommended, pluginVue.configs["flat/recommended"]],
     rules: {
       // override/add rules settings here, such as:
       // 'vue/no-unused-vars': 'error'
     },
     languageOptions: {
-      sourceType: 'module',
+      sourceType: "module",
       globals: {
-        ...globals.browser
-      }
-    }
-  }
+        ...globals.browser,
+      },
+    },
+  },
 ]);
