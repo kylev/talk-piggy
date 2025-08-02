@@ -11,7 +11,7 @@ Vue.use(BootstrapVue);
 Vue.use(VueAnalytics, {
   id: "UA-627907-4",
   debug: {
-    sendHitTask: process.env.NODE_ENV === "production"
+    sendHitTask: import.meta.env.PROD,
   }
 });
 
@@ -21,6 +21,6 @@ new Vue({
   store,
   render: h => h(App),
   mounted() {
-    this.$ga.page(process.env.BASE_URL);
+    this.$ga.page(import.meta.env.BASE_URL);
   }
 }).$mount("#app");
