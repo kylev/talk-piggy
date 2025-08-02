@@ -10,10 +10,11 @@ export default defineConfig([
     files: ['**/*.{js,vue}'],
   },
 
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'tmp']),
 
   {
     languageOptions: {
+      ecmaVersion: 'latest',
       globals: {
         ...globals.browser,
       },
