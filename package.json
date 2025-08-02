@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.vue",
-    "format": "prettier --check src/",
+    "format": "prettier --write src/",
     "test": "true",
     "logo": "convert src/components/logo.svg public/logo.png"
   },

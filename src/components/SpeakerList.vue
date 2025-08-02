@@ -6,7 +6,7 @@
           :speaker="s"
           @toggle="updateTalking({ id: s.id, value: !s.isSpeaking })"
           @remove="removeSpeaker({ id: s.id })"
-          @rename="name => editSpeakerName({ id: s.id, name })"
+          @rename="(name) => editSpeakerName({ id: s.id, name })"
         />
       </b-col>
     </b-row>
@@ -14,20 +14,20 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "pinia";
-import { usePrimaryStore } from "@/stores/primary";
+import { mapActions, mapState } from 'pinia'
+import { usePrimaryStore } from '@/stores/primary'
 
-import SpeakerCard from "./SpeakerCard.vue";
+import SpeakerCard from './SpeakerCard.vue'
 
 export default {
   components: {
-    SpeakerCard
+    SpeakerCard,
   },
   computed: {
-    ...mapState(usePrimaryStore, ["speakers"])
+    ...mapState(usePrimaryStore, ['speakers']),
   },
   methods: {
-    ...mapActions(usePrimaryStore, ["editSpeakerName", "removeSpeaker", "updateTalking"])
-  }
-};
+    ...mapActions(usePrimaryStore, ['editSpeakerName', 'removeSpeaker', 'updateTalking']),
+  },
+}
 </script>

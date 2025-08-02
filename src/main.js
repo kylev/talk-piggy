@@ -1,25 +1,25 @@
-import { createBootstrap } from 'bootstrap-vue-next';
-import { createPinia } from 'pinia';
-import { createApp } from "vue";
-import { configure as configureGTag } from "vue-gtag";
+import { createBootstrap } from 'bootstrap-vue-next'
+import { createPinia } from 'pinia'
+import { createApp } from 'vue'
+import { configure as configureGTag } from 'vue-gtag'
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue-next/dist/bootstrap-vue-next.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 
-import App from "./App.vue";
+import App from './App.vue'
 
 // TODO verify working.
 configureGTag({
-  tagId: "G-T8GEX2GPTP",
+  tagId: 'G-T8GEX2GPTP',
   config: {
-    app_name: "talk-piggy",
+    app_name: 'talk-piggy',
   },
-});
+})
 
-const pinia = createPinia();
-const app = createApp(App);
-app.use(createBootstrap());
-app.use(pinia);
+const pinia = createPinia()
+const app = createApp(App)
+app.use(createBootstrap())
+app.use(pinia)
 
 // app.config.productionTip = false;
-app.mount("#app");
+app.mount('#app')

@@ -7,18 +7,18 @@
 </template>
 
 <script>
-import MainPanel from "./components/MainPanel.vue";
-import SpeakerList from "./components/SpeakerList.vue";
-import TopBar from "./components/TopBar.vue";
+import MainPanel from './components/MainPanel.vue'
+import SpeakerList from './components/SpeakerList.vue'
+import TopBar from './components/TopBar.vue'
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     MainPanel,
     SpeakerList,
-    TopBar
-  }
-};
+    TopBar,
+  },
+}
 </script>
 
 <style>
