@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { nextTick } from "vue";
+
 import TimeDisplay from "./TimeDisplay.vue";
 
 export default {
@@ -63,8 +65,7 @@ export default {
     startEditingName() {
       this.newName = this.speaker.name;
       this.editing = true;
-      // TODO Has to be a better way to do this
-      // Vue.nextTick(() => this.$refs.inputField.focus());
+      nextTick(() => this.$refs.inputField.focus());
     },
     finishEdit() {
       this.$emit("rename", this.newName);
