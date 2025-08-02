@@ -10,7 +10,10 @@ import App from "./App.vue";
 
 // TODO verify working.
 configureGTag({
-  tagId: "G-T8GEX2GPTP"
+  tagId: "G-T8GEX2GPTP",
+  config: {
+    app_name: "talk-piggy",
+  },
 });
 
 const pinia = createPinia();

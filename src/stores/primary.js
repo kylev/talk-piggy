@@ -1,7 +1,7 @@
 // import Vue from "vue";
 // import Vuex from "vuex";
 // import VuexPersistence from "vuex-persist";
-// import { event } from "vue-gtag";
+import { event } from "vue-gtag";
 import { defineStore } from 'pinia';
 
 // Vue.use(Vuex);
@@ -65,14 +65,14 @@ export const usePrimaryStore = defineStore('primary', {
     },
     addSpeaker(name) {
       this.speakers.push(createSpeaker(name));
-      event("TalkPiggy", "add_speaker");
+      event("add_speaker", { name });
     },
     editSpeakerName({ id, name }) {
       const i = findSpeakerIndex(this.speakers, id);
 
       if (i >= 0) {
         const s = this.speakers[i];
-        Vue.set(this.speakers, i, { ...s, name });
+        this.speakers[i] = { ...s, name };
       }
     },
     removeSpeaker({ id }) {
@@ -83,7 +83,7 @@ export const usePrimaryStore = defineStore('primary', {
 
       if (i >= 0) {
         const s = this.speakers[i];
-        Vue.set(this.speakers, i, { ...s, [attr]: value });
+        this.speakers[i] = { ...s, [attr]: value };
       }
     },
     setTickLast(date) {
@@ -106,26 +106,26 @@ export const usePrimaryStore = defineStore('primary', {
       this.tickLast = new Date();
       this.tickSeconds += elapsed;
     },
-    updateTalking({ commit, dispatch }, payload) {
+    updateTalking(payload) {
       if (payload.value) {
-        dispatch("startTimer");
+        this.startTimer();
       }
-      commit("setSpeakerValue", { ...payload, attr: "isSpeaking" });
+      this.setSpeakerValue({ ...payload, attr: "isSpeaking" });
     },
-    startTimer({ commit }) {
+    startTimer() {
       if (!this.tickTimer) {
-        commit("setTickLast", new Date());
+        this.setTickLast(new Date());
         this.tickTimer = setInterval(() => {
-          commit("incrementTick", new Date());
+          this.incrementTick(new Date());
         }, 1000);
-        event("TalkPiggy", "start_timer");
+        event("start_timer", {});
       }
     },
     stopTimer() {
       if (this.tickTimer) {
         clearInterval(this.tickTimer);
         this.tickTimer = null;
-        event("TalkPiggy", "stop_timer");
+        event("stop_timer", {});
       }
     },
   }
