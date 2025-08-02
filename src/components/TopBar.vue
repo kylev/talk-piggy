@@ -9,8 +9,8 @@
         <TimerControl />
       </b-nav-item>
     </b-navbar-nav>
-    <b-navbar-nav class="ml-auto">
-      <b-nav-item-dropdown text="Menu" right>
+    <b-navbar-nav class="ms-auto">
+      <b-nav-item-dropdown text="Menu">
         <b-dropdown-item href="#" v-b-modal.add-speaker-modal>
           Add Piggy
         </b-dropdown-item>
