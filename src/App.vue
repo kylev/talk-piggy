@@ -10,7 +10,6 @@
 import MainPanel from './components/MainPanel.vue'
 import SpeakerList from './components/SpeakerList.vue'
 import TopBar from './components/TopBar.vue'
-import { defineAsyncComponent } from 'vue'
 
 export default {
   name: 'app',
