@@ -8,8 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint .",
-    "format": "prettier --write src/",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
     "test": "true",
     "logo": "convert src/components/logo.svg public/logo.png"
   },
