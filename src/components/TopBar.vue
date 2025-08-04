@@ -1,8 +1,8 @@
 <template>
   <b-navbar type="dark" variant="info" sticky>
     <b-navbar-brand href="#">
-      <img
-        src="./logo.svg"
+      <b-img
+        :src="logoUrl"
         alt="Talk Piggy Logo"
         height="25"
         width="25"
@@ -41,6 +41,7 @@
 import { mapActions } from 'pinia'
 import { usePrimaryStore } from '@/stores/primary'
 
+import logoUrl from './logo.svg'
 import TimerControl from './TimerControl.vue'
 
 export default {
@@ -48,6 +49,7 @@ export default {
   data() {
     return {
       name: '',
+      logoUrl,
     }
   },
   methods: {
