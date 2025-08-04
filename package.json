@@ -31,6 +31,7 @@
     "prettier": "^3.6.2",
     "unplugin-vue-components": "^28.8.0",
     "vite": "^7.0.6",
+    "vite-bundle-analyzer": "^1.1.0",
     "vite-plugin-vue-devtools": "^8.0.0",
     "vue-eslint-parser": "^10.2.0"
   }
