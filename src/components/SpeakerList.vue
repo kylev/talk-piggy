@@ -9,6 +9,11 @@
           @rename="(name) => editSpeakerName({ id: s.id, name })"
         />
       </b-col>
+      <b-col md="4" class="text-center align-self-center">
+        <b-button v-b-modal.add-speaker-modal size="lg" variant="outline-primary" class="fs-1"
+          >＋</b-button
+        >
+      </b-col>
     </b-row>
   </b-container>
 </template>
