@@ -40,7 +40,9 @@ function initialState() {
 
 export const usePrimaryStore = defineStore('primary', {
   state: initialState,
-  // plugins: [vuexLocal.plugin],
+  persist: {
+    pick: ['speakers', 'tickSeconds', 'crosstalkSeconds'],
+  },
   getters: {
     isRunning: (state) => state.tickTimer !== null,
   },
