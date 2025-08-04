@@ -15,7 +15,7 @@ export default defineConfig({
     Components({
       resolvers: [BootstrapVueNextResolver()],
     }),
-    analyzer({fileName: 'bundle-report.html', analyzerMode: 'static'}),
+    analyzer({ fileName: 'bundle-report.html', analyzerMode: 'static' }),
     vueDevTools(),
   ],
   resolve: {
