@@ -1,8 +1,14 @@
 <template>
   <b-navbar type="dark" variant="info" sticky>
     <b-navbar-brand href="#">
-      <img src="./logo.svg" alt="Logo" height="25" width="25" />
-      Talk Piggy
+      <img
+        src="./logo.svg"
+        alt="Talk Piggy Logo"
+        height="25"
+        width="25"
+        class="align-text-top mx-2"
+      />
+      <h1 class="d-inline">Talk Piggy</h1>
     </b-navbar-brand>
     <b-navbar-nav>
       <b-nav-item href="#">
