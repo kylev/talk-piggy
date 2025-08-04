@@ -8,11 +8,11 @@ import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 
 import App from './App.vue'
 
-// TODO verify working.
 configureGTag({
   tagId: 'G-T8GEX2GPTP',
   config: {
     app_name: 'talk-piggy',
+    send_page_view: true,
   },
 })
 
@@ -21,5 +21,4 @@ const app = createApp(App)
 app.use(createBootstrap())
 app.use(pinia)
 
-// app.config.productionTip = false;
 app.mount('#app')
