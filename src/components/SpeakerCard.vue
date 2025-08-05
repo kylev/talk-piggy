@@ -9,7 +9,7 @@
       <span v-if="!editing">
         {{ speaker.name }}
       </span>
-      <input
+      <b-form-input
         v-if="editing"
         v-model.trim="newName"
         ref="inputField"
