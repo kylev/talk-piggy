@@ -2,6 +2,7 @@ import { createBootstrap } from 'bootstrap-vue-next'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import { configure as configureGTag } from 'vue-gtag'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
@@ -17,6 +18,7 @@ configureGTag({
 })
 
 const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 const app = createApp(App)
 app.use(createBootstrap())
 app.use(pinia)
