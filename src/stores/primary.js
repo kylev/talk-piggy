@@ -1,19 +1,5 @@
-// import Vue from "vue";
-// import Vuex from "vuex";
-// import VuexPersistence from "vuex-persist";
 import { event } from 'vue-gtag'
 import { defineStore } from 'pinia'
-
-// Vue.use(Vuex);
-
-// const vuexLocal = new VuexPersistence({
-//   storage: window.localStorage,
-//   reducer: state => ({
-//     speakers: state.speakers,
-//     tickSeconds: state.tickSeconds,
-//     crosstalkSeconds: state.crosstalkSeconds
-//   })
-// });
 
 function createSpeaker(name) {
   return {
