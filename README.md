@@ -1,35 +1,7 @@
 # talk-piggy
 
-## Project setup
+[![Deploy to GitHub Pages](https://github.com/kylev/talk-piggy/actions/workflows/deployment.yml/badge.svg)](https://github.com/kylev/talk-piggy/actions/workflows/deployment.yml)
 
-```
-yarn install
-```
+Talk Piggy is a "with it existed" little web app written in Vue and Pinia. It is a barely-useful timer for arguments so its easy to figure out who is hogging all the talking time.
 
-### Compiles and hot-reloads for development
-
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-
-```
-yarn run build
-```
-
-### Run your tests
-
-```
-yarn run test
-```
-
-### Lints and fixes files
-
-```
-yarn run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Use it live at [Talk Piggy](https://kylev.github.io/talk-piggy/).
