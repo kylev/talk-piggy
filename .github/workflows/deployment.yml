@@ -28,7 +28,7 @@ jobs:
           node-version-file: '.node-version'
           cache: npm
       - run: npm ci
-      - run: npm run lint
+      - run: npm run test
         continue-on-error: true
       - run: npm run build
       - name: Upload artifact
