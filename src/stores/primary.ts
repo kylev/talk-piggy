@@ -1,12 +1,7 @@
 import { event } from 'vue-gtag'
 import { defineStore } from 'pinia'
 
-interface Speaker {
-  id: string
-  name: string
-  speakingSeconds: number
-  isSpeaking: boolean
-}
+import type { Speaker } from '@/types.ts'
 
 function createSpeaker(name: string): Speaker {
   return {
@@ -74,7 +69,15 @@ export const usePrimaryStore = defineStore('primary', {
     removeSpeaker({ id }: { id: string }) {
       this.speakers = this.speakers.filter((item) => item.id !== id)
     },
-    setSpeakerValue({ id, attr, value }: { id: string; attr: string; value: string | boolean }) {
+    setSpeakerValue({
+      id,
+      attr,
+      value,
+    }: {
+      id: string
+      attr: keyof Speaker
+      value: string | boolean
+    }) {
       const i = findSpeakerIndex(this.speakers, id)
 
       if (i >= 0) {

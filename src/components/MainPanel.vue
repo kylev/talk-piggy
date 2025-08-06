@@ -16,7 +16,7 @@ const store = usePrimaryStore()
       </b-col>
       <b-col class="text-center">
         <b-card title="Crosstalk">
-          <TimeDisplay v-bind:time="store.crosstalkSeconds" class="h1" />
+          <TimeDisplay :time="store.crosstalkSeconds" class="h1" />
         </b-card>
       </b-col>
     </b-row>

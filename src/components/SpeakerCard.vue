@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
+import type { Speaker } from '@/types.ts'
 import TimeDisplay from './TimeDisplay.vue'
 
 defineEmits<{
@@ -9,7 +10,7 @@ defineEmits<{
   (e: 'rename', name: string): void
 }>()
 const props = defineProps<{
-  speaker: { name: string; speakingSeconds: number; isSpeaking: boolean }
+  speaker: Speaker
 }>()
 
 const hover = ref(false)
