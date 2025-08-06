@@ -38,7 +38,7 @@ export const usePrimaryStore = defineStore('primary', {
     pick: ['speakers', 'tickSeconds', 'crosstalkSeconds'],
   },
   getters: {
-    isRunning: (state) => state.tickTimer !== null,
+    isRunning: (state) => state.tickTimer !== undefined,
   },
   actions: {
     resetState() {
