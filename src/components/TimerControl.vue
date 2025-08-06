@@ -1,20 +1,12 @@
+<script setup lang="ts">
+import { usePrimaryStore } from '@/stores/primary.ts'
+
+const store = usePrimaryStore()
+</script>
+
 <template>
   <section>
-    <b-button v-if="!isRunning" v-on:click="startTimer" variant="light"> Start </b-button>
-    <b-button v-if="isRunning" v-on:click="stopTimer">Pause</b-button>
+    <BButton v-if="!store.isRunning" @click="store.startTimer" variant="light"> Start </BButton>
+    <BButton v-if="store.isRunning" @click="store.stopTimer"> Pause </BButton>
   </section>
 </template>
-
-<script>
-import { mapActions, mapState } from 'pinia'
-import { usePrimaryStore } from '@/stores/primary'
-
-export default {
-  methods: {
-    ...mapActions(usePrimaryStore, ['startTimer', 'stopTimer']),
-  },
-  computed: {
-    ...mapState(usePrimaryStore, ['isRunning']),
-  },
-}
-</script>
