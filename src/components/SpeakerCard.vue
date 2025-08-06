@@ -27,7 +27,7 @@ const color = computed(() => {
     @click="$emit('toggle')"
     @mouseenter="hover = true"
     @mouseleave="hover = false"
-    :body-bg-variant="color"
+    :bg-variant="color"
   >
     <b-card-title>
       <span v-if="!editing">
