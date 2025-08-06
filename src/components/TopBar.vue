@@ -7,15 +7,6 @@ import logoUrl from './logo.svg'
 
 const store = usePrimaryStore()
 const name = ref('')
-const handleOk = () => {
-  store.addSpeaker(name.value)
-  name.value = ''
-}
-
-const handleSubmit = () => {
-  handleOk()
-  $refs.modal.hide()
-}
 </script>
 
 <template>
@@ -47,8 +38,14 @@ const handleSubmit = () => {
         <b-dropdown-item href="#" @click="store.resetState()"> Hard Reset </b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
-    <b-modal ref="modal" id="add-speaker-modal" @ok="handleOk" title="Add Piggy">
-      <b-form @submit.stop.prevent="handleSubmit">
+    <b-modal
+      ref="modal"
+      id="add-speaker-modal"
+      title="Add Piggy"
+      @show="name = ''"
+      @ok="store.addSpeaker(name)"
+    >
+      <b-form @submit.stop.prevent>
         <b-form-input v-model.trim="name" ref="name-field" placeholder="Type a name" autofocus />
       </b-form>
     </b-modal>
