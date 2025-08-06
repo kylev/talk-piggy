@@ -8,7 +8,7 @@ const store = usePrimaryStore()
 <template>
   <b-container>
     <b-row>
-      <b-col v-for="s in store.speakers" :key="s.id" md="4" class="py-2">
+      <b-col v-for="s in store.speakers" :key="s.id" md="4" lg="3" class="py-2">
         <SpeakerCard
           :speaker="s"
           @toggle="store.updateTalking({ id: s.id, value: !s.isSpeaking })"
@@ -16,7 +16,7 @@ const store = usePrimaryStore()
           @rename="(name: string) => store.editSpeakerName({ id: s.id, name })"
         />
       </b-col>
-      <b-col md="4" class="py-2 text-center align-self-center">
+      <b-col md="4" lg="3" class="py-2 text-center align-self-center">
         <b-button v-b-modal.add-speaker-modal size="lg" variant="outline-primary" class="fs-1"
           >＋</b-button
         >
