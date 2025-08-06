@@ -1,25 +1,18 @@
-<template>
-  <div>
-    <span v-if="hours">{{ hours }}:</span>
-    <span>{{ minutes }}:</span>
-    <span>{{ seconds }}</span>
-  </div>
-</template>
+<script setup lang="ts">
+defineProps<{ time: number }>()
 
-<script>
-export default {
-  props: ['time'],
-  computed: {
-    hours() {
-      const h = Math.floor(this.time / 3600)
-      return h > 0 ? h : null
-    },
-    minutes() {
-      return (Math.floor(this.time / 60) % 60).toString().padStart(2, '0')
-    },
-    seconds() {
-      return (this.time % 60).toString().padStart(2, '0')
-    },
-  },
+const str0s = (n: number) => n.toString().padStart(2, '0')
+
+const hours = (t: number) => {
+  const h = Math.floor(t / 3600)
+  return h > 0 ? h : null
 }
 </script>
+
+<template>
+  <div>
+    <span v-if="hours(time)">{{ hours(time) }}:</span>
+    <span>{{ str0s(Math.floor(time / 60) % 60) }}:</span>
+    <span>{{ str0s(time % 60) }}</span>
+  </div>
+</template>

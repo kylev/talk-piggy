@@ -1,33 +1,25 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import { usePrimaryStore } from '@/stores/primary.ts'
+
+import TimeDisplay from './TimeDisplay.vue'
+
+const store = usePrimaryStore()
+</script>
+
 <template>
   <b-container class="py-md-2">
     <b-row>
       <b-col class="text-center">
         <b-card title="Total">
-          <TimeDisplay v-bind:time="totalTime" class="h1" />
+          <TimeDisplay :time="store.tickSeconds" class="h1" />
         </b-card>
       </b-col>
       <b-col class="text-center">
         <b-card title="Crosstalk">
-          <TimeDisplay v-bind:time="crossTime" class="h1" />
+          <TimeDisplay v-bind:time="store.crosstalkSeconds" class="h1" />
         </b-card>
       </b-col>
     </b-row>
   </b-container>
 </template>
-
-<script>
-import { mapState } from 'pinia'
-import { usePrimaryStore } from '@/stores/primary'
-
-import TimeDisplay from './TimeDisplay.vue'
-
-export default {
-  components: { TimeDisplay },
-  computed: {
-    ...mapState(usePrimaryStore, {
-      totalTime: 'tickSeconds',
-      crossTime: 'crosstalkSeconds',
-    }),
-  },
-}
-</script>

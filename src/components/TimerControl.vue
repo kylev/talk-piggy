@@ -5,9 +5,9 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 import { mapActions, mapState } from 'pinia'
-import { usePrimaryStore } from '@/stores/primary'
+import { usePrimaryStore } from '@/stores/primary.ts'
 
 export default {
   methods: {

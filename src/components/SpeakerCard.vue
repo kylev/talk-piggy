@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { nextTick, ref, computed } from 'vue'
+
+import TimeDisplay from './TimeDisplay.vue'
+import SpeakerList from './SpeakerList.vue'
+
+const props = defineProps<{
+  speaker: { name: string; speakingSeconds: number; isSpeaking: boolean }
+}>()
+defineEmits<{
+  (e: 'toggle'): void
+  (e: 'remove'): void
+  (e: 'rename', name: string): void
+}>()
+
+const hover = ref(false)
+const editing = ref(false)
+const newName = ref(props.speaker.name)
+
+const color = computed(() => {
+  return props.speaker.isSpeaking ? 'primary' : 'light'
+})
+</script>
+
 <template>
   <b-card
     @click="$emit('toggle')"
@@ -13,13 +37,14 @@
         v-if="editing"
         v-model.trim="newName"
         ref="inputField"
-        @keyup.enter="finishEdit"
-        @keyup.esc="cancelEdit"
-        @focusout="cancelEdit"
+        autofocus
+        @keyup.enter="$emit('rename', newName)"
+        @keyup.esc="editing = false"
+        @focusout="editing = false"
         @click.stop
       />
       <b-dropdown v-if="!editing" right :variant="color || 'white'" class="float-right">
-        <b-dropdown-item @click.stop="startEditingName"> Edit </b-dropdown-item>
+        <b-dropdown-item @click.stop="editing = true"> Edit </b-dropdown-item>
         <b-dropdown-item @click.stop="$emit('remove')"> Remove </b-dropdown-item>
       </b-dropdown>
     </b-card-title>
@@ -28,43 +53,3 @@
     </b-card-text>
   </b-card>
 </template>
-
-<script>
-import { nextTick } from 'vue'
-
-import TimeDisplay from './TimeDisplay.vue'
-
-export default {
-  props: ['speaker'],
-  components: {
-    TimeDisplay,
-  },
-  data() {
-    return {
-      hover: false,
-      editing: false,
-      newName: '',
-    }
-  },
-  computed: {
-    color() {
-      if (this.speaker.isSpeaking) return 'primary'
-      else return this.hover ? 'light' : null
-    },
-  },
-  methods: {
-    startEditingName() {
-      this.newName = this.speaker.name
-      this.editing = true
-      nextTick(() => this.$refs.inputField.focus())
-    },
-    finishEdit() {
-      this.$emit('rename', this.newName)
-      this.editing = false
-    },
-    cancelEdit() {
-      this.editing = false
-    },
-  },
-}
-</script>
