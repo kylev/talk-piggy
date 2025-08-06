@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+
+import TimeDisplay from './TimeDisplay.vue'
+
 defineEmits<{
   (e: 'toggle'): void
   (e: 'remove'): void
@@ -7,10 +11,6 @@ defineEmits<{
 const props = defineProps<{
   speaker: { name: string; speakingSeconds: number; isSpeaking: boolean }
 }>()
-
-import { ref, computed } from 'vue'
-
-import TimeDisplay from './TimeDisplay.vue'
 
 const hover = ref(false)
 const editing = ref(false)
