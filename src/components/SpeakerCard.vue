@@ -13,7 +13,6 @@ const props = defineProps<{
   speaker: Speaker
 }>()
 
-const hover = ref(false)
 const editing = ref(false)
 const newName = ref(props.speaker.name)
 
@@ -28,12 +27,7 @@ const handleSave = () => {
 </script>
 
 <template>
-  <b-card
-    @click="$emit('toggle')"
-    @mouseenter="hover = true"
-    @mouseleave="hover = false"
-    :bg-variant="color"
-  >
+  <b-card @click="$emit('toggle')" :bg-variant="color">
     <b-card-title>
       <span v-if="!editing">
         {{ speaker.name }}
