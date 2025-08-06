@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { usePrimaryStore } from '@/stores/primary.ts'
 
 import TimeDisplay from './TimeDisplay.vue'
