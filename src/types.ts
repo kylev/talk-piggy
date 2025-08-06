@@ -4,3 +4,11 @@ export interface Speaker {
   speakingSeconds: number
   isSpeaking: boolean
 }
+
+export interface PrimaryStore {
+  speakers: Speaker[]
+  tickSeconds: number
+  tickTimer?: number
+  tickLast: Date
+  crosstalkSeconds: number
+}

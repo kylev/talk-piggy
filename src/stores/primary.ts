@@ -1,7 +1,8 @@
-import { event } from 'vue-gtag'
 import { defineStore } from 'pinia'
+import {} from 'pinia-plugin-persistedstate' // So TS can recognize the defineStore args changes
+import { event } from 'vue-gtag'
 
-import type { Speaker } from '@/types.ts'
+import type { PrimaryStore, Speaker } from '@/types.ts'
 
 function createSpeaker(name: string): Speaker {
   return {
@@ -16,24 +17,19 @@ function findSpeakerIndex(speakers: Speaker[], id: string): number {
   return speakers.findIndex((e) => e.id === id)
 }
 
-function initialState() {
-  return {
+export const usePrimaryStore = defineStore('primary', {
+  state: (): PrimaryStore => ({
     speakers: [createSpeaker('Alice'), createSpeaker('Bob')],
     tickSeconds: 0,
-    // tickTimer: null as ReturnType<typeof setInterval> | null,
-    tickTimer: undefined as number | undefined,
-    tickLast: new Date() as Date,
+    tickTimer: undefined,
+    tickLast: new Date(),
     crosstalkSeconds: 0,
-  }
-}
-
-export const usePrimaryStore = defineStore('primary', {
-  state: initialState,
+  }),
   persist: {
     pick: ['speakers', 'tickSeconds', 'crosstalkSeconds'],
   },
   getters: {
-    isRunning: (state) => state.tickTimer !== undefined,
+    isRunning: (s): boolean => s.tickTimer !== undefined,
   },
   actions: {
     resetState() {
@@ -62,8 +58,7 @@ export const usePrimaryStore = defineStore('primary', {
       const i = findSpeakerIndex(this.speakers, id)
 
       if (i >= 0) {
-        const s = this.speakers[i]
-        this.speakers[i] = { ...s, name }
+        this.speakers[i].name = name
       }
     },
     removeSpeaker({ id }: { id: string }) {
