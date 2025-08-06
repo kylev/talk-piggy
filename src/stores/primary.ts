@@ -1,7 +1,14 @@
 import { event } from 'vue-gtag'
 import { defineStore } from 'pinia'
 
-function createSpeaker(name) {
+interface Speaker {
+  id: string
+  name: string
+  speakingSeconds: number
+  isSpeaking: boolean
+}
+
+function createSpeaker(name: string): Speaker {
   return {
     id: Math.random().toString(),
     name,
@@ -10,7 +17,7 @@ function createSpeaker(name) {
   }
 }
 
-function findSpeakerIndex(speakers, id) {
+function findSpeakerIndex(speakers: Speaker[], id: string): number {
   return speakers.findIndex((e) => e.id === id)
 }
 
@@ -18,8 +25,9 @@ function initialState() {
   return {
     speakers: [createSpeaker('Alice'), createSpeaker('Bob')],
     tickSeconds: 0,
-    tickTimer: null,
-    tickLast: new Date(),
+    // tickTimer: null as ReturnType<typeof setInterval> | null,
+    tickTimer: undefined as number | undefined,
+    tickLast: new Date() as Date,
     crosstalkSeconds: 0,
   }
 }
@@ -51,11 +59,11 @@ export const usePrimaryStore = defineStore('primary', {
       this.tickSeconds = 0
       this.crosstalkSeconds = 0
     },
-    addSpeaker(name) {
+    addSpeaker(name: string) {
       this.speakers.push(createSpeaker(name))
       event('add_speaker', { name })
     },
-    editSpeakerName({ id, name }) {
+    editSpeakerName({ id, name }: { id: string; name: string }) {
       const i = findSpeakerIndex(this.speakers, id)
 
       if (i >= 0) {
@@ -63,10 +71,10 @@ export const usePrimaryStore = defineStore('primary', {
         this.speakers[i] = { ...s, name }
       }
     },
-    removeSpeaker({ id }) {
+    removeSpeaker({ id }: { id: string }) {
       this.speakers = this.speakers.filter((item) => item.id !== id)
     },
-    setSpeakerValue({ id, attr, value }) {
+    setSpeakerValue({ id, attr, value }: { id: string; attr: string; value: string | boolean }) {
       const i = findSpeakerIndex(this.speakers, id)
 
       if (i >= 0) {
@@ -74,11 +82,11 @@ export const usePrimaryStore = defineStore('primary', {
         this.speakers[i] = { ...s, [attr]: value }
       }
     },
-    setTickLast(date) {
+    setTickLast(date: Date) {
       this.tickLast = date
     },
-    incrementTick(newTime) {
-      const elapsed = Math.round((newTime - this.tickLast) / 1000)
+    incrementTick(newTime: Date) {
+      const elapsed = Math.round((newTime.getTime() - this.tickLast.getTime()) / 1000)
       const updateCount = this.speakers.reduce((accum, item) => {
         if (item.isSpeaking) {
           item.speakingSeconds += elapsed
@@ -94,7 +102,7 @@ export const usePrimaryStore = defineStore('primary', {
       this.tickLast = new Date()
       this.tickSeconds += elapsed
     },
-    updateTalking(payload) {
+    updateTalking(payload: { id: string; value: boolean }) {
       if (payload.value) {
         this.startTimer()
       }
@@ -103,7 +111,7 @@ export const usePrimaryStore = defineStore('primary', {
     startTimer() {
       if (!this.tickTimer) {
         this.setTickLast(new Date())
-        this.tickTimer = setInterval(() => {
+        this.tickTimer = window.setInterval(() => {
           this.incrementTick(new Date())
         }, 1000)
         event('start_timer', {})
@@ -112,7 +120,7 @@ export const usePrimaryStore = defineStore('primary', {
     stopTimer() {
       if (this.tickTimer) {
         clearInterval(this.tickTimer)
-        this.tickTimer = null
+        this.tickTimer = undefined
         event('stop_timer', {})
       }
     },
