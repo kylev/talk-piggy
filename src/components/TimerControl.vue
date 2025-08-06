@@ -6,9 +6,7 @@ const store = usePrimaryStore()
 
 <template>
   <section>
-    <b-button v-if="!store.isRunning" v-on:click="store.startTimer" variant="light">
-      Start
-    </b-button>
-    <b-button v-if="store.isRunning" v-on:click="store.stopTimer">Pause</b-button>
+    <BButton v-if="!store.isRunning" @click="store.startTimer" variant="light"> Start </BButton>
+    <BButton v-if="store.isRunning" @click="store.stopTimer"> Pause </BButton>
   </section>
 </template>
