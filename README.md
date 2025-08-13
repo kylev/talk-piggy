@@ -9,4 +9,4 @@ Use it live at [Talk Piggy](https://kylev.github.io/talk-piggy/).
 
 ## Bugs
 
-Feel free to report them [using GitHub issues](/kylev/talk-piggy/issues).
+Feel free to report them [using GitHub issues](https://github.com/kylev/talk-piggy/issues).
