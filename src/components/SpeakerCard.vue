@@ -27,12 +27,12 @@ const handleSave = () => {
 </script>
 
 <template>
-  <b-card @click="$emit('toggle')" :bg-variant="color">
-    <b-card-title>
+  <BCard @click="$emit('toggle')" :bg-variant="color">
+    <BCardTitle>
       <span v-if="!editing">
         {{ speaker.name }}
       </span>
-      <b-form-input
+      <BFormInput
         v-if="editing"
         v-model.trim="newName"
         ref="inputField"
@@ -42,13 +42,13 @@ const handleSave = () => {
         @focusout="editing = false"
         @click.stop
       />
-      <b-dropdown v-if="!editing" right :variant="color || 'white'" class="float-right">
-        <b-dropdown-item @click.stop="editing = true"> Edit </b-dropdown-item>
-        <b-dropdown-item @click.stop="$emit('remove')"> Remove </b-dropdown-item>
-      </b-dropdown>
-    </b-card-title>
-    <b-card-text>
+      <BDropdown v-if="!editing" right :variant="color || 'white'" class="float-right">
+        <BDropdownItem @click.stop="editing = true"> Edit </BDropdownItem>
+        <BDropdownItem @click.stop="$emit('remove')"> Remove </BDropdownItem>
+      </BDropdown>
+    </BCardTitle>
+    <BCardText>
       <TimeDisplay v-bind:time="speaker.speakingSeconds" />
-    </b-card-text>
-  </b-card>
+    </BCardText>
+  </BCard>
 </template>

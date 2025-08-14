@@ -10,9 +10,9 @@ const name = ref('')
 </script>
 
 <template>
-  <b-navbar type="dark" variant="info" sticky="top">
-    <b-navbar-brand href="#">
-      <b-img
+  <BNavbar type="dark" variant="info" sticky="top">
+    <BNavbarBrand href="#">
+      <BImg
         :src="logoUrl"
         alt="Talk Piggy Logo"
         height="25"
@@ -20,34 +20,32 @@ const name = ref('')
         class="align-text-top mx-2"
       />
       <h1 class="d-inline">Talk Piggy</h1>
-    </b-navbar-brand>
-    <b-navbar-nav>
-      <b-nav-item href="#">
+    </BNavbarBrand>
+    <BNavbarNav>
+      <BNavItem href="#">
         <TimerControl />
-      </b-nav-item>
-    </b-navbar-nav>
-    <b-navbar-nav class="ms-auto">
-      <b-nav-item-dropdown text="Menu">
-        <b-dropdown-item href="#" v-b-modal.add-speaker-modal> Add Piggy </b-dropdown-item>
-        <b-dropdown-item href="#" @click="store.resetTotalTimes()">
-          Top Clock Clear
-        </b-dropdown-item>
-        <b-dropdown-item href="#" @click="store.resetSpeakerTimes()">
+      </BNavItem>
+    </BNavbarNav>
+    <BNavbarNav class="ms-auto">
+      <BNavItemDropdown text="Menu">
+        <BDropdownItem href="#" v-b-modal.add-speaker-modal> Add Piggy </BDropdownItem>
+        <BDropdownItem href="#" @click="store.resetTotalTimes()"> Top Clock Clear </BDropdownItem>
+        <BDropdownItem href="#" @click="store.resetSpeakerTimes()">
           Piggy Clock Clear
-        </b-dropdown-item>
-        <b-dropdown-item href="#" @click="store.resetState()"> Hard Reset </b-dropdown-item>
-      </b-nav-item-dropdown>
-    </b-navbar-nav>
-    <b-modal
+        </BDropdownItem>
+        <BDropdownItem href="#" @click="store.resetState()"> Hard Reset </BDropdownItem>
+      </BNavItemDropdown>
+    </BNavbarNav>
+    <BModal
       ref="modal"
       id="add-speaker-modal"
       title="Add Piggy"
       @show="name = ''"
       @ok="store.addSpeaker(name)"
     >
-      <b-form @submit.stop.prevent>
-        <b-form-input v-model.trim="name" ref="name-field" placeholder="Type a name" autofocus />
-      </b-form>
-    </b-modal>
-  </b-navbar>
+      <BForm @submit.stop.prevent>
+        <BFormInput v-model.trim="name" ref="name-field" placeholder="Type a name" autofocus />
+      </BForm>
+    </BModal>
+  </BNavbar>
 </template>
