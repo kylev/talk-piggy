@@ -11,7 +11,7 @@ describe('TimerControl', () => {
         plugins: [
           createTestingPinia({
             createSpy: vi.fn,
-            initialState: initialState(),
+            initialState: { primary: initialState() },
           }),
         ],
       },
@@ -25,7 +25,7 @@ describe('TimerControl', () => {
         plugins: [
           createTestingPinia({
             createSpy: vi.fn,
-            initialState: initialState(),
+            initialState: { primary: initialState() },
           }),
         ],
       },

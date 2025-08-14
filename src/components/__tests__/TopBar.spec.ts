@@ -12,7 +12,7 @@ describe('TopBar', () => {
         plugins: [
           createTestingPinia({
             createSpy: vi.fn,
-            initialState: initialState(),
+            initialState: { primary: initialState() },
           }),
         ],
       },
