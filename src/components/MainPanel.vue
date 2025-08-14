@@ -7,18 +7,18 @@ const store = usePrimaryStore()
 </script>
 
 <template>
-  <b-container class="py-md-2">
-    <b-row>
-      <b-col class="text-center">
-        <b-card title="Total">
+  <BContainer class="py-md-2">
+    <BRow>
+      <BCol class="text-center">
+        <BCard title="Total">
           <TimeDisplay :time="store.tickSeconds" class="h1" />
-        </b-card>
-      </b-col>
-      <b-col class="text-center">
-        <b-card title="Crosstalk">
+        </BCard>
+      </BCol>
+      <BCol class="text-center">
+        <BCard title="Crosstalk">
           <TimeDisplay :time="store.crosstalkSeconds" class="h1" />
-        </b-card>
-      </b-col>
-    </b-row>
-  </b-container>
+        </BCard>
+      </BCol>
+    </BRow>
+  </BContainer>
 </template>
