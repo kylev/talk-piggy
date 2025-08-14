@@ -1,22 +1,11 @@
-import { describe, it, expect, vi } from 'vitest'
-import { mount } from '@vue/test-utils'
-import { createTestingPinia } from '@pinia/testing'
+import { describe, it, expect } from 'vitest'
+import { mountWithPinia as mount } from './test-utils'
 
-import { initialState } from '@/stores/primary'
 import TopBar from '../TopBar.vue'
 
 describe('TopBar', () => {
   it('renders the "Talk Piggy" title', () => {
-    const wrapper = mount(TopBar, {
-      global: {
-        plugins: [
-          createTestingPinia({
-            createSpy: vi.fn,
-            initialState: { primary: initialState() },
-          }),
-        ],
-      },
-    })
+    const wrapper = mount(TopBar)
     expect(wrapper.text()).toContain('Talk Piggy')
   })
 })

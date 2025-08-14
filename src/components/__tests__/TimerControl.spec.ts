@@ -1,35 +1,17 @@
-import { describe, it, expect, vi } from 'vitest'
-import { mount } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest'
+import { mountWithPinia as mount } from './test-utils'
+
+import { usePrimaryStore } from '@/stores/primary'
 import TimerControl from '../TimerControl.vue'
-import { createTestingPinia } from '@pinia/testing'
-import { initialState, usePrimaryStore } from '@/stores/primary'
 
 describe('TimerControl', () => {
   it('renders properly', () => {
-    const wrapper = mount(TimerControl, {
-      global: {
-        plugins: [
-          createTestingPinia({
-            createSpy: vi.fn,
-            initialState: { primary: initialState() },
-          }),
-        ],
-      },
-    })
+    const wrapper = mount(TimerControl)
     expect(wrapper.text()).toContain('Start')
   })
 
   it('responds to clicks', async () => {
-    const wrapper = mount(TimerControl, {
-      global: {
-        plugins: [
-          createTestingPinia({
-            createSpy: vi.fn,
-            initialState: { primary: initialState() },
-          }),
-        ],
-      },
-    })
+    const wrapper = mount(TimerControl)
 
     const store = usePrimaryStore()
     await wrapper.find('button').trigger('click')
