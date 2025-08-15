@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
-import type { Speaker } from '@/types.ts'
+import type Speaker from '@/types/Speaker.ts'
 import TimeDisplay from './TimeDisplay.vue'
 
 const emit = defineEmits<{

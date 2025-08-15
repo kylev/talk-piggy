@@ -1,8 +1,15 @@
 import { defineStore } from 'pinia'
-import {} from 'pinia-plugin-persistedstate' // So TS can recognize the defineStore args changes
 import { event } from 'vue-gtag'
 
-import type { PrimaryStore, Speaker } from '@/types.ts'
+import type Speaker from '@/types/Speaker.ts'
+
+export interface PrimaryStore {
+  speakers: Speaker[]
+  tickSeconds: number
+  tickTimer?: number
+  tickLast: Date
+  crosstalkSeconds: number
+}
 
 function createSpeaker(name: string): Speaker {
   return {
