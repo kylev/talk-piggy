@@ -1,4 +1,3 @@
-import { initialState } from '@/stores/primary'
 import { createTestingPinia } from '@pinia/testing'
 import { mount } from '@vue/test-utils'
 import { vi } from 'vitest'
@@ -10,7 +9,6 @@ export const mountWithPinia = (component: Component, options = {}) => {
       plugins: [
         createTestingPinia({
           createSpy: vi.fn,
-          initialState: { primary: initialState() },
         }),
       ],
     },
