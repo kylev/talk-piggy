@@ -17,14 +17,16 @@ function findSpeakerIndex(speakers: Speaker[], id: string): number {
   return speakers.findIndex((e) => e.id === id)
 }
 
+export const initialState = (): PrimaryStore => ({
+  speakers: [createSpeaker('Alice'), createSpeaker('Bob')],
+  tickSeconds: 0,
+  tickTimer: undefined,
+  tickLast: new Date(),
+  crosstalkSeconds: 0,
+})
+
 export const usePrimaryStore = defineStore('primary', {
-  state: (): PrimaryStore => ({
-    speakers: [createSpeaker('Alice'), createSpeaker('Bob')],
-    tickSeconds: 0,
-    tickTimer: undefined,
-    tickLast: new Date(),
-    crosstalkSeconds: 0,
-  }),
+  state: (): PrimaryStore => initialState(),
   persist: {
     pick: ['speakers', 'tickSeconds', 'crosstalkSeconds'],
   },

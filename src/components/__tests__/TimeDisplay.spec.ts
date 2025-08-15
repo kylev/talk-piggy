@@ -1,17 +1,18 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import HelloWorld from '../TimeDisplay.vue'
+import TimeDisplay from '../TimeDisplay.vue'
 
-describe('HelloWorld', () => {
+describe('TimeDisplay', () => {
   it('renders without hours by default', () => {
-    const wrapper = mount(HelloWorld, { props: { time: 0 } })
+    const wrapper = mount(TimeDisplay, { props: { time: 0 } })
     expect(wrapper.text()).toContain('00:00')
     expect(wrapper.text()).not.toContain('0:00:00')
   })
 
-  it('renders with hours when time is greater than 3600 seconds', () => {
-    const wrapper = mount(HelloWorld, { props: { time: 3661 } })
+  it('renders un-padded hours when time is greater than 3600 seconds', () => {
+    const wrapper = mount(TimeDisplay, { props: { time: 3661 } })
     expect(wrapper.text()).toContain('1:01:01')
+    expect(wrapper.text()).not.toContain('01:01:01')
   })
 })
